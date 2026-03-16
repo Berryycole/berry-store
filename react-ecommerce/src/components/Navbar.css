@@ -1,0 +1,144 @@
+/* Navbar Background with a Berry Blue Gradient */
+.berry-navbar {
+  background: linear-gradient(135deg, #0056b3 0%, #002d5b 100%);
+  padding: 0.7rem 0;
+  border-bottom: 3px solid #00d4ff; /* Cyan bottom border */
+}
+
+/* --- STORE NAME STYLING --- */
+.berry-logo {
+  background: #00d4ff; /* Cyan background for the 'B' icon */
+  color: #002d5b; /* Dark Navy text */
+  font-weight: 900;
+  padding: 0 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  font-size: 1.4rem;
+  box-shadow: 2px 2px 0px #ffffff;
+}
+
+.berry-name {
+  color: white;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.store-name {
+  color: #00d4ff; /* Cyan accent for 'Store' */
+  font-weight: 300;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-left: 4px;
+}
+
+/* Nav Link Hover Effects */
+.berry-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.berry-navbar .nav-link:hover, 
+.berry-navbar .nav-link.active {
+  color: #fff !important;
+  transform: scale(1.05);
+}
+
+.berry-navbar .nav-link.active {
+  font-weight: 700;
+  border-bottom: 2px solid #00d4ff; /* Cyan underline for active page */
+}
+
+/* Search Bar Styling */
+.berry-search .form-control {
+  border-radius: 20px 0 0 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+}
+
+.btn-berry-search {
+  background: #00d4ff; /* Electric Cyan button */
+  color: #002d5b;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  font-weight: bold;
+}
+
+.btn-berry-search:hover {
+  background: #ffffff;
+  color: #0056b3;
+}
+
+/* Cart Icon Pill */
+.cart-pill {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  padding: 5px 15px !important;
+  transition: background 0.3s;
+}
+
+.cart-pill:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Hide hamburger and desktop links on mobile */
+@media (max-width: 991.98px) {
+  .navbar-collapse, .navbar-toggler {
+    display: none !important;
+  }
+}
+
+/* --- MOBILE BOTTOM NAVIGATION (Berry Theme) --- */
+.mobile-bottom-nav {
+  background-color: #ffffff;
+  box-shadow: 0 -4px 20px rgba(0, 45, 91, 0.1); /* Subtle midnight blue shadow */
+  border-top-left-radius: 20px; /* Modern app curve */
+  border-top-right-radius: 20px;
+  border-top: none !important; /* Removes the flat grey border */
+  padding-bottom: env(safe-area-inset-bottom); /* Safe area fix for modern phones */
+}
+
+.mobile-nav-link {
+  color: #8fa0b3; /* Muted blue-grey for inactive items */
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  flex: 1;
+  text-decoration: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.mobile-nav-link i {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+  transition: transform 0.2s, color 0.2s;
+}
+
+/* --- ACTIVE STATE (Berry Blue & Cyan) --- */
+.mobile-nav-link.active {
+  color: #002d5b !important; /* Midnight Blue text for contrast */
+  font-weight: 700;
+}
+
+.mobile-nav-link.active i {
+  color: #00d4ff !important; /* Electric Cyan icon to match your brand */
+  transform: translateY(-4px); /* "Pop-up" animation when tapped */
+  filter: drop-shadow(0px 3px 4px rgba(0, 212, 255, 0.4)); /* Subtle cyan glow */
+}
+
+/* Ensure the body doesn't hide behind the new taller curved bar */
+body {
+  padding-bottom: 85px; 
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-bottom: 0;
+  }
+}

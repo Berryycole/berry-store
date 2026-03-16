@@ -1,0 +1,274 @@
+/* --- BERRY STORE BRANDING VARIABLES --- */
+:root {
+  --berry-blue: #0056b3;
+  --midnight-blue: #002d5b;
+  --berry-cyan: #00d4ff;
+  --bg-light: #f8f9fa;
+  --text-dark: #212529;
+  --card-radius: 12px;
+  --card-shadow: 0 4px 20px rgba(0, 45, 91, 0.08);
+}
+
+/* --- BASE RESET & LAYOUT FIX --- */
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left; /* Ensures Navbar and Hero span full width */
+}
+
+/* --- NAVBAR STYLING --- */
+.berry-navbar {
+  background: linear-gradient(135deg, var(--berry-blue) 0%, var(--midnight-blue) 100%) !important;
+  border-bottom: 3px solid var(--berry-cyan);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 500;
+  margin: 0 5px;
+  transition: 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* --- HERO SECTION REFINEMENT --- */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* Taller for a premium, immersive look */
+  /* Make sure to replace this URL with your actual hero image path if needed, 
+     or set it inline in your JSX! */
+  background: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin-top: -10px; /* Pulls hero up slightly to seamlessly meet the navbar */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Darker gradient to make the cyan pop and blend into the next section */
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.6) 0%, #0f172a 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero-title {
+  font-size: 4.5rem !important;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #e2e8f0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-accent {
+  color: var(--berry-cyan);
+}
+
+/* --- THE "BERRY" BUTTON (For the Hero) --- */
+.btn-berry-lg {
+  background: var(--berry-cyan);
+  color: var(--midnight-blue);
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.4s;
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 1.5rem;
+}
+
+.btn-berry-lg:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+  background: white;
+  color: var(--midnight-blue);
+}
+
+/* --- SECTION TRANSITIONS --- */
+.featured-section {
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  position: relative;
+}
+
+.view-all-link {
+  color: var(--berry-cyan);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.view-all-link:hover {
+  color: var(--berry-blue);
+  margin-right: -5px;
+}
+
+/* --- ANIMATION --- */
+.animate-fade-in {
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- CARD & BUTTON COSMETICS --- */
+.custom-card {
+  border: none !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--card-shadow);
+  transition: 0.3s ease;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.custom-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 212, 255, 0.15);
+}
+
+.btn-primary {
+  background-color: var(--berry-blue) !important;
+  border: none !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  padding: 10px 20px;
+}
+
+.btn-primary:hover {
+  background-color: var(--midnight-blue) !important;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+/* ========================================= */
+/* --- ENHANCED AESTHETIC DARK MODE ---      */
+/* ========================================= */
+
+body.dark-theme {
+  --dark-bg: #0f172a;           /* Deep Slate Navy Background */
+  --dark-card: #1e293b;         /* Modern Slate Card color */
+  --dark-border: rgba(255, 255, 255, 0.05);
+  --glass-bg: rgba(15, 23, 42, 0.8);
+  
+  background-color: var(--dark-bg) !important;
+  color: #f1f5f9 !important;
+}
+
+/* Ensure the featured section blends perfectly in Dark Mode */
+body.dark-theme .featured-section {
+  background-color: var(--dark-bg);
+}
+
+/* Glassmorphism for Navbar & Footer */
+body.dark-theme .berry-navbar,
+body.dark-theme footer {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(12px); /* Premium blur effect */
+  border-bottom: 1px solid var(--dark-border) !important;
+}
+
+/* Aesthetic Card Overrides with Glow */
+body.dark-theme .card,
+body.dark-theme .custom-card,
+body.dark-theme .sidebar {
+  background-color: var(--dark-card) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .custom-card:hover {
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.12) !important;
+  border-color: rgba(0, 212, 255, 0.2) !important;
+}
+
+/* --- Form Controls (Inputs & Selects) --- */
+body.dark-theme .form-control,
+body.dark-theme .form-select,
+body.dark-theme .input-group-text {
+  background-color: #0f172a !important; /* Makes the input box darker than the card to look indented */
+  color: #ffffff !important; /* Ensures the text you TYPE is bright white */
+  border: 1px solid #334155 !important;
+}
+
+/* FIX: Forces the placeholder text to be light silver and fully visible */
+body.dark-theme .form-control::placeholder,
+body.dark-theme .form-control::-webkit-input-placeholder {
+  color: #94a3b8 !important; 
+  opacity: 1 !important; 
+}
+
+body.dark-theme .form-control:focus {
+  border-color: var(--berry-cyan) !important;
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.15) !important;
+  background-color: #0f172a !important;
+}
+
+/* Headings color fix (Typo fixed here from did-theme to dark-theme) */
+/* Headings color fix */
+body.dark-theme h1, 
+body.dark-theme h2, 
+body.dark-theme h3, 
+body.dark-theme h4, 
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme .product-title {
+  color: #ffffff !important;
+}
+
+/* Sidebar & Category Item Styling */
+body.dark-theme .category-item {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--dark-border) !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .category-item:hover {
+  background-color: rgba(0, 212, 255, 0.05) !important;
+  color: var(--berry-cyan) !important;
+}
+
+body.dark-theme .category-item.active {
+  background-color: rgba(0, 212, 255, 0.1) !important;
+  border-left: 4px solid var(--berry-cyan) !important;
+  color: var(--berry-cyan) !important;
+}

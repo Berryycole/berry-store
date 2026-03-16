@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+}
+
+a {
+  color: #fff;
+}
+a:hover {
+  color: #ccc;
+}
+
+/* container and card overrides for dark theme */
+.card {
+  background-color: #111;
+  color: #fff;
+  border: none;
+}
+
+/* ensure any heading or icon inside card remains bright */
+.card .card-title,
+.card .fa-star {
+  color: #fff !important;
+}
+
+/* make names stand out by default color (overridden by text-warning class) */
+.card .card-title {
+  color: #000000 !important; /* warm gold/yellow for better contrast */
+}
+
+/* price styling */
+.card .price-current {
+  color: #000000 !important; /* highlight current price */
+}
+.card .price-old {
+  color: #bbb !important; /* muted old price */
+}
+
+/* gold filled stars + light outline for empty */
+.fa-star.fas {
+  color: #ffcc00 !important;
+}
+.fa-star.far {
+  color: #bbb !important;
+}
+
+.btn-primary, .btn-primary:hover {
+  background-color: #fff;
+  color: #000;
+  border: none;
+}
+
+.sidebar, .bg-light {
+  background-color: #000 !important;
+  color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}
+.navbar-dark .navbar-nav .nav-link.active {
+  color: #ccc;
+}
+
+.bg-black {
+  background-color: #000 !important;
+}
+
+/* product image hover etc still apply */
+.product-img-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.product-img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-img-wrapper:hover .product-img {
+  transform: scale(1.1);
+}
+
+.sale-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+/* dark styling for bootstrap list groups */
+.list-group-item {
+  background-color: #111;
+  color: #fff;
+  border: none;
+}
+.list-group-item.active {
+  background-color: #222;
+}
+
+.product-img-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.product-img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-img-wrapper:hover .product-img {
+  transform: scale(1.1);
+}
+
+.sale-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+}
