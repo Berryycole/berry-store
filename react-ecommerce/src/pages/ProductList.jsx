@@ -14,7 +14,7 @@ const ProductList = () => {
   const [showWishlistOnly, setShowWishlistOnly] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch("https://berry-store.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

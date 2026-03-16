@@ -5,7 +5,7 @@ const Sidebar = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/categories")
+    fetch("https://berry-store.onrender.com/categories")
       .then(res => res.json())
       .then(data => setCategories(data))
       .catch(() => {

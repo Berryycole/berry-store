@@ -7,7 +7,7 @@ const Home = () => {
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch("https://berry-store.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data.slice(0, 4)))
       .catch((err) => {
