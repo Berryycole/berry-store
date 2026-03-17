@@ -32,7 +32,7 @@ const products = [
     {
         id: 4,
         name: "Heirloom Tomato Mix",
-        image: "https://ambrogifoods.com/wp-content/uploads/2021/07/08068-Tomato-Heirloom-Mixed.jpg",
+        image: "https://i.ibb.co/BVFCvgJZ/Heirloom-Tomato-Mix.jpg",
         price: 190,
         oldPrice: 230,
         rating: 4,
@@ -42,7 +42,7 @@ const products = [
     {
         id: 5,
         name: "Organic Navel Oranges",
-        image: "https://www.melissas.com/cdn/shop/files/image-of-navel-oranges-fruit-1125637071_600x600.jpg?v=1738777596",
+        image: "hhttps://i.ibb.co/RpDKYZMP/Organic-Navel-Oranges.jpg",
         price: 140,
         oldPrice: 165,
         rating: 4,
