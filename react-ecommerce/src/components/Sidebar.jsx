@@ -9,7 +9,7 @@ const Sidebar = () => {
       .then(res => res.json())
       .then(data => setCategories(data))
       .catch(() => {
-        setCategories(["Electronics", "Accessories", "Footwear", "Clothing", "Home & Garden"]);
+        setCategories(["Fruits", "Vegetables"]);
       });
   }, []);
 
