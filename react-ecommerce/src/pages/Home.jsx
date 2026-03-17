@@ -65,7 +65,7 @@ const Home = () => {
              <div style={{ 
                height: '100%', 
                width: '100%',
-               backgroundImage: `url("https://images.unsplash.com/photo-1601999114066-542b3ae71891?auto=format&fit=crop&w=2000&q=80")`, 
+               backgroundImage: `url("https://healthyhenrycounty.org/wp-content/uploads/2020/08/healthy-lifestyle-1-1024x585.png")`, 
                backgroundSize: 'cover', 
                backgroundPosition: 'center', 
                display: 'flex', 
