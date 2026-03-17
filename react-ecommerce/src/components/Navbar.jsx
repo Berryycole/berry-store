@@ -12,7 +12,6 @@ const Navbar = () => {
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-    // This adds or removes the 'dark-theme' class from the main body
     if (!isDarkMode) {
       document.body.classList.add('dark-theme');
     } else {
@@ -20,16 +19,15 @@ const Navbar = () => {
     }
   };
 
-  // Theme Colors
-  const berryBlue = "#0056b3";
-  const midnightBlue = "#002d5b";
+  // We are moving these to CSS variables in Navbar.css for better control
   const berryCyan = "#00d4ff";
+  const midnightBlue = "#002d5b";
 
   return (
     <>
-      {/* --- TOP NAVBAR (Desktop & Mobile Brand) --- */}
-      <nav className="navbar navbar-expand-lg sticky-top shadow-sm berry-navbar" 
-           style={{ background: `linear-gradient(135deg, ${berryBlue} 0%, ${midnightBlue} 100%)`, padding: '0.7rem 0' }}>
+      {/* --- TOP NAVBAR --- */}
+      {/* Removed the inline 'style' background so Navbar.css .berry-navbar handles it */}
+      <nav className="navbar navbar-expand-lg sticky-top shadow-sm berry-navbar">
         <div className="container d-flex justify-content-between">
           <Link className="navbar-brand d-flex align-items-center" to="/">
             <span style={{ backgroundColor: berryCyan, color: midnightBlue, fontWeight: '900', padding: '0 10px', borderRadius: '6px', fontSize: '1.4rem', marginRight: '10px' }}>B</span>
@@ -37,12 +35,11 @@ const Navbar = () => {
             <span style={{ color: berryCyan, fontWeight: '300', fontSize: '1.4rem', textTransform: 'uppercase', marginLeft: '5px' }}>Store</span>
           </Link>
 
-          {/* Mobile Dark Mode Toggle (Visible only on small screens) */}
+          {/* Mobile Toggle */}
           <button onClick={toggleTheme} className="btn btn-link text-white d-lg-none text-decoration-none ms-auto" style={{ fontSize: '1.2rem' }}>
             {isDarkMode ? <i className="fas fa-sun text-warning"></i> : <i className="fas fa-moon"></i>}
           </button>
 
-          {/* Desktop Links (Hidden on Mobile via CSS) */}
           <div className="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
             <ul className="navbar-nav me-auto">
               {['Home', 'Products', 'Blog', 'About', 'Contact'].map((item) => (
@@ -54,7 +51,6 @@ const Navbar = () => {
               ))}
             </ul>
             
-            {/* Desktop Dark Mode Toggle Button */}
             <button onClick={toggleTheme} className="btn btn-link text-white me-3 text-decoration-none" style={{ fontSize: '1.2rem' }}>
               {isDarkMode ? <i className="fas fa-sun text-warning"></i> : <i className="fas fa-moon"></i>}
             </button>
@@ -68,6 +64,7 @@ const Navbar = () => {
       </nav>
 
       {/* --- BOTTOM NAVIGATION (Mobile Only) --- */}
+      {/* Removed all inline styles here so .mobile-bottom-nav in CSS can change the background */}
       <div className="mobile-bottom-nav d-lg-none fixed-bottom z-3">
         <div className="d-flex justify-content-around align-items-center h-100">
           <NavLink to="/" className="mobile-nav-link">
@@ -104,4 +101,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;  
+export default Navbar;
