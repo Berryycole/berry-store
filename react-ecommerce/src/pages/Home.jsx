@@ -14,42 +14,10 @@ const Home = () => {
         console.error("Backend offline, loading fresh produce mock data", err);
         // Updated mock data for Fruits & Vegetables
         setProducts([
-          { 
-            id: 1, 
-            name: "Organic Red Gala Apples", 
-            price: 150, 
-            oldPrice: 180, 
-            discount: 16, 
-            rating: 5, 
-            image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6bcd6?auto=format&fit=crop&w=400&q=80" 
-          },
-          { 
-            id: 2, 
-            name: "Fresh Spinach Bunch", 
-            price: 85, 
-            oldPrice: 110, 
-            discount: 22, 
-            rating: 4, 
-            image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=400&q=80" 
-          },
-          { 
-            id: 3, 
-            name: "Premium Cavendish Bananas", 
-            price: 120, 
-            oldPrice: 145, 
-            discount: 17, 
-            rating: 5, 
-            image: "https://images.unsplash.com/photo-1603833665858-e61d17a86224?auto=format&fit=crop&w=400&q=80" 
-          },
-          { 
-            id: 4, 
-            name: "Heirloom Tomato Mix", 
-            price: 190, 
-            oldPrice: 230, 
-            discount: 17, 
-            rating: 4, 
-            image: "https://images.unsplash.com/photo-1518977676601-b53f02ac6d31?auto=format&fit=crop&w=400&q=80" 
-          }
+          { id: 1, name: "Organic Gala Apples", price: 150, category: "Fruits", rating: 5, image: "https://i.ibb.co/v4fF7VKv/Organic-Gala-Apples.webp" },
+          { id: 2, name: "Fresh Baby Spinach", price: 85, category: "Vegetables", rating: 4, image: "https://i.ibb.co/358gdPS4/Fresh-Spinach-Bunch.jpg" },
+          { id: 3, name: "Sweet Cavendish Bananas", price: 120, category: "Fruits", rating: 5, image: "https://i.ibb.co/BV3Ydn31/Sweet-Cavendish-Bananas.jpg" },
+          { id: 4, name: "Vine-Ripened Cherry Tomatoes", price: 190, category: "Vegetables", rating: 4, image: "https://i.ibb.co/6cLvWzvP/Vine-Ripened-Cherry-Tomatoes.jpg" }
         ]);
       });
   }, []);

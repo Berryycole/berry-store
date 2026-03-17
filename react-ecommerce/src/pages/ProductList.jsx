@@ -24,14 +24,14 @@ const ProductList = () => {
         console.error("Backend offline, loading farm-fresh mock inventory", err);
         // FRUIT & VEGETABLE MOCK DATA
         setProducts([
-          { id: 1, name: "Organic Gala Apples", price: 150, category: "Fruits", rating: 5, image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6bcd6?auto=format&fit=crop&w=400&q=80" },
-          { id: 2, name: "Fresh Baby Spinach", price: 85, category: "Vegetables", rating: 4, image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=400&q=80" },
-          { id: 3, name: "Sweet Cavendish Bananas", price: 120, category: "Fruits", rating: 5, image: "https://images.unsplash.com/photo-1603833665858-e61d17a86224?auto=format&fit=crop&w=400&q=80" },
-          { id: 4, name: "Vine-Ripened Cherry Tomatoes", price: 190, category: "Vegetables", rating: 4, image: "https://images.unsplash.com/photo-1518977676601-b53f02ac6d31?auto=format&fit=crop&w=400&q=80" },
-          { id: 5, name: "Organic Navel Oranges", price: 140, category: "Fruits", rating: 4, image: "https://images.unsplash.com/photo-1582284540020-8acaf02229bb?auto=format&fit=crop&w=400&q=80" },
-          { id: 6, name: "Crisp Bell Pepper Mix", price: 210, category: "Vegetables", rating: 5, image: "https://images.unsplash.com/photo-1566842600175-97dca489844f?auto=format&fit=crop&w=400&q=80" },
-          { id: 7, name: "Fresh Broccoli Crowns", price: 95, category: "Vegetables", rating: 4, image: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=400&q=80" },
-          { id: 8, name: "Sweet Thai Mangoes", price: 250, category: "Fruits", rating: 5, image: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=400&q=80" }
+          { id: 1, name: "Organic Gala Apples", price: 150, category: "Fruits", rating: 5, image: "https://i.ibb.co/v4fF7VKv/Organic-Gala-Apples.webp" },
+          { id: 2, name: "Fresh Baby Spinach", price: 85, category: "Vegetables", rating: 4, image: "https://i.ibb.co/358gdPS4/Fresh-Spinach-Bunch.jpg" },
+          { id: 3, name: "Sweet Cavendish Bananas", price: 120, category: "Fruits", rating: 5, image: "https://i.ibb.co/BV3Ydn31/Sweet-Cavendish-Bananas.jpg" },
+          { id: 4, name: "Vine-Ripened Cherry Tomatoes", price: 190, category: "Vegetables", rating: 4, image: "https://i.ibb.co/6cLvWzvP/Vine-Ripened-Cherry-Tomatoes.jpg" },
+          { id: 5, name: "Organic Navel Oranges", price: 140, category: "Fruits", rating: 4, image: "https://i.ibb.co/RpDKYZMP/Organic-Navel-Oranges.jpg" },
+          { id: 6, name: "Crisp Bell Pepper Mix", price: 210, category: "Vegetables", rating: 5, image: "https://i.ibb.co/W45dfmnr/Crisp-Bell-Pepper-Mix.jpg" },
+          { id: 7, name: "Fresh Broccoli Crowns", price: 95, category: "Vegetables", rating: 4, image: "https://i.ibb.co/gFhg914t/Fresh-Broccoli-Crowns.webp" },
+          { id: 8, name: "Sweet Thai Mangoes", price: 250, category: "Fruits", rating: 5, image: "https://i.ibb.co/0v3Dj8q/Sweet-Thai-Mangoes.webp" }
         ]);
         setLoading(false);
       });
