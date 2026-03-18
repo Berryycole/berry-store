@@ -92,8 +92,8 @@ const Navbar = () => {
             <span>Blog</span>
           </NavLink>
           <NavLink to="/contact" className="mobile-nav-link">
-            <i className="fas fa-comment-alt"></i>
-            <span>Chat</span>
+            <i className="fas fa-phone-alt"></i>
+            <span>Contact</span>
           </NavLink>
         </div>
       </div>
