@@ -9,6 +9,7 @@ import Terms from './pages/Terms';
 import Blog from './pages/Blog';
 import Cart from './pages/Cart'; 
 import Checkout from './pages/Checkout'; 
+import Wishlist from './pages/Wishlist';
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/wishlist" element={<Wishlist />} />
             
             {/* Add the new Cart route here */}
             <Route path="/cart" element={<Cart />} />

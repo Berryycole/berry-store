@@ -38,8 +38,8 @@ const Navbar = () => {
 
           {/* Mobile Header Icons (Toggle + Wishlist) */}
           <div className="d-lg-none d-flex align-items-center">
-            {/* 3. Mobile Wishlist Icon */}
-            <Link to="/products" className="text-white me-3 text-decoration-none position-relative">
+            {/* 3. Mobile Wishlist Icon - Now pointing to the new page */}
+            <Link to="/wishlist" className="text-white me-3 text-decoration-none position-relative">
               <i className="fas fa-heart text-danger" style={{ fontSize: '1.2rem' }}></i>
               {wishlist.length > 0 && (
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ fontSize: '0.6rem' }}>
@@ -66,8 +66,8 @@ const Navbar = () => {
             
             {/* Desktop Icons */}
             <div className="d-flex align-items-center">
-              {/* 4. Desktop Wishlist Link */}
-              <Link className="nav-link position-relative me-3 text-white" to="/products">
+              {/* 4. Desktop Wishlist Link - Now pointing to the new page */}
+              <Link className="nav-link position-relative me-3 text-white" to="/wishlist">
                 <i className="fas fa-heart text-danger fs-5"></i>
                 {wishlist.length > 0 && (
                   <span className="badge rounded-pill bg-danger ms-1" style={{ fontSize: '0.7rem' }}>
