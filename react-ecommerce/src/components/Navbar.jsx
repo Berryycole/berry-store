@@ -39,7 +39,7 @@ const Navbar = () => {
           {/* Mobile Header Icons (Toggle + Wishlist) */}
           <div className="d-lg-none d-flex align-items-center">
             {/* 3. Mobile Wishlist Icon - Now pointing to the new page */}
-            <Link to="/wishlist" className="text-white me-3 text-decoration-none position-relative">
+            <Link to="/Wishlist" className="text-white me-3 text-decoration-none position-relative">
               <i className="fas fa-heart text-danger" style={{ fontSize: '1.2rem' }}></i>
               {wishlist.length > 0 && (
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ fontSize: '0.6rem' }}>
