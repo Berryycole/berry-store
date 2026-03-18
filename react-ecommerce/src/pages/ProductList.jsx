@@ -1,21 +1,20 @@
 import { useEffect, useState, useMemo, useContext } from "react";
 import ProductCard from '../components/ProductCard';
 import Sidebar from '../components/Sidebar';
-import { WishlistContext } from '../context/WishlistContext'; // 1. Import your new Context
+import { WishlistContext } from '../context/WishlistContext';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // --- GLOBAL STATE ---
-  const { wishlist } = useContext(WishlistContext); // 2. Use global wishlist instead of local state
+  const { wishlist } = useContext(WishlistContext); 
 
   // --- LOCAL STATE FOR FILTERING ---
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [maxPrice, setMaxPrice] = useState(1000); 
   const [sortOption, setSortOption] = useState('default');
-  const [showWishlistOnly, setShowWishlistOnly] = useState(false);
 
   useEffect(() => {
     fetch("https://berry-store.onrender.com/products")
@@ -40,11 +39,11 @@ const ProductList = () => {
       });
   }, []);
 
-  // --- LOGIC: Filter, Search, Sort, AND Price ---
+  // --- LOGIC: Simplified to Category, Search, Price, and Sort ---
   const displayedProducts = useMemo(() => {
     let filtered = [...products];
 
-    if (showWishlistOnly) filtered = filtered.filter(p => wishlist.includes(p.id));
+    // No longer filtering by "Wishlist Only" here
     if (selectedCategory !== 'All') filtered = filtered.filter(p => p.category === selectedCategory);
     if (searchQuery.trim() !== '') filtered = filtered.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
     filtered = filtered.filter(p => p.price <= maxPrice);
@@ -57,7 +56,7 @@ const ProductList = () => {
       default: break;
     }
     return filtered;
-  }, [products, searchQuery, selectedCategory, maxPrice, sortOption, showWishlistOnly, wishlist]);
+  }, [products, searchQuery, selectedCategory, maxPrice, sortOption]);
 
   const handleSidebarFilter = ({ category, maxPrice }) => {
     setSelectedCategory(category);
@@ -67,41 +66,34 @@ const ProductList = () => {
   return (
     <div className="container mt-4">
       <div className="row g-4">
-        {/* Sidebar Column */}
         <div className="col-lg-3 col-md-4 mb-4">
           <Sidebar onFilterChange={handleSidebarFilter} activeCategory={selectedCategory} />
         </div>
         
-        {/* Main Grid Column */}
         <div className="col-lg-9 col-md-8">
           <div className="d-flex justify-content-between align-items-center mb-4">
             <h2 className="fw-bold m-0" style={{ color: "var(--berry-cyan)" }}>
-              {showWishlistOnly ? "My Wishlist" : "Our Harvest"}
+              Our Harvest
             </h2>
             {!loading && <span className="text-muted small">{displayedProducts.length} Items Found</span>}
           </div>
 
-          {/* --- CONTROL PANEL --- */}
+          {/* --- UPDATED CONTROL PANEL (Wishlist Button Removed) --- */}
           <div className="custom-card mb-4 p-3 shadow-sm bg-white rounded-3">
             <div className="row g-2">
-              <div className="col-md-6">
+              <div className="col-md-7">
                 <div className="input-group">
                   <span className="input-group-text bg-transparent border-end-0"><i className="fas fa-search text-muted"></i></span>
                   <input type="text" className="form-control border-start-0" placeholder="Search harvest..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                 </div>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-5">
                 <select className="form-select" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
                   <option value="default">Sort By: Featured</option>
                   <option value="price-asc">Price: Low to High</option>
                   <option value="price-desc">Price: High to Low</option>
                   <option value="rating">Top Rated</option>
                 </select>
-              </div>
-              <div className="col-md-2">
-                <button className={`btn w-100 fw-bold ${showWishlistOnly ? 'btn-danger' : 'btn-outline-danger'}`} onClick={() => setShowWishlistOnly(!showWishlistOnly)}>
-                  <i className="fas fa-heart"></i> ({wishlist.length})
-                </button>
               </div>
             </div>
           </div>
@@ -113,7 +105,6 @@ const ProductList = () => {
               {displayedProducts.length > 0 ? (
                 displayedProducts.map((product) => (
                   <div className="col-lg-4 col-md-6 col-sm-6 mb-4" key={product.id}>
-                    {/* 3. Pass only the product; ProductCard handles its own wishlist status now */}
                     <ProductCard product={product} />
                   </div>
                 ))
