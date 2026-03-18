@@ -1,10 +1,13 @@
 import { useContext, useState } from 'react';
 import { CartContext } from '../context/CartContext';
+import { WishlistContext } from '../context/WishlistContext'; // 1. Import WishlistContext
 import { NavLink, Link } from 'react-router-dom';
 import './Navbar.css'; 
 
 const Navbar = () => {
   const { cart } = useContext(CartContext);
+  const { wishlist } = useContext(WishlistContext); // 2. Access the wishlist state
+  
   const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
   // --- DARK MODE LOGIC ---
@@ -19,14 +22,12 @@ const Navbar = () => {
     }
   };
 
-  // We are moving these to CSS variables in Navbar.css for better control
   const berryCyan = "#00d4ff";
   const midnightBlue = "#002d5b";
 
   return (
     <>
       {/* --- TOP NAVBAR --- */}
-      {/* Removed the inline 'style' background so Navbar.css .berry-navbar handles it */}
       <nav className="navbar navbar-expand-lg sticky-top shadow-sm berry-navbar">
         <div className="container d-flex justify-content-between">
           <Link className="navbar-brand d-flex align-items-center" to="/">
@@ -35,10 +36,22 @@ const Navbar = () => {
             <span style={{ color: berryCyan, fontWeight: '300', fontSize: '1.4rem', textTransform: 'uppercase', marginLeft: '5px' }}>Store</span>
           </Link>
 
-          {/* Mobile Toggle */}
-          <button onClick={toggleTheme} className="btn btn-link text-white d-lg-none text-decoration-none ms-auto" style={{ fontSize: '1.2rem' }}>
-            {isDarkMode ? <i className="fas fa-sun text-warning"></i> : <i className="fas fa-moon"></i>}
-          </button>
+          {/* Mobile Header Icons (Toggle + Wishlist) */}
+          <div className="d-lg-none d-flex align-items-center">
+            {/* 3. Mobile Wishlist Icon */}
+            <Link to="/products" className="text-white me-3 text-decoration-none position-relative">
+              <i className="fas fa-heart text-danger" style={{ fontSize: '1.2rem' }}></i>
+              {wishlist.length > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ fontSize: '0.6rem' }}>
+                  {wishlist.length}
+                </span>
+              )}
+            </Link>
+            
+            <button onClick={toggleTheme} className="btn btn-link text-white text-decoration-none p-0" style={{ fontSize: '1.2rem' }}>
+              {isDarkMode ? <i className="fas fa-sun text-warning"></i> : <i className="fas fa-moon"></i>}
+            </button>
+          </div>
 
           <div className="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
             <ul className="navbar-nav me-auto">
@@ -51,20 +64,32 @@ const Navbar = () => {
               ))}
             </ul>
             
-            <button onClick={toggleTheme} className="btn btn-link text-white me-3 text-decoration-none" style={{ fontSize: '1.2rem' }}>
-              {isDarkMode ? <i className="fas fa-sun text-warning"></i> : <i className="fas fa-moon"></i>}
-            </button>
+            {/* Desktop Icons */}
+            <div className="d-flex align-items-center">
+              {/* 4. Desktop Wishlist Link */}
+              <Link className="nav-link position-relative me-3 text-white" to="/products">
+                <i className="fas fa-heart text-danger fs-5"></i>
+                {wishlist.length > 0 && (
+                  <span className="badge rounded-pill bg-danger ms-1" style={{ fontSize: '0.7rem' }}>
+                    {wishlist.length}
+                  </span>
+                )}
+              </Link>
 
-            <Link className="nav-link position-relative d-none d-lg-block cart-pill" to="/cart">
-              <i className="fas fa-shopping-cart fs-5"></i>
-              {totalItems > 0 && <span className="badge rounded-pill bg-danger ms-2">{totalItems}</span>}
-            </Link>
+              <button onClick={toggleTheme} className="btn btn-link text-white me-3 text-decoration-none" style={{ fontSize: '1.2rem' }}>
+                {isDarkMode ? <i className="fas fa-sun text-warning"></i> : <i className="fas fa-moon"></i>}
+              </button>
+
+              <Link className="nav-link position-relative d-none d-lg-block cart-pill" to="/cart">
+                <i className="fas fa-shopping-cart fs-5"></i>
+                {totalItems > 0 && <span className="badge rounded-pill bg-danger ms-2">{totalItems}</span>}
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
 
       {/* --- BOTTOM NAVIGATION (Mobile Only) --- */}
-      {/* Removed all inline styles here so .mobile-bottom-nav in CSS can change the background */}
       <div className="mobile-bottom-nav d-lg-none fixed-bottom z-3">
         <div className="d-flex justify-content-around align-items-center h-100">
           <NavLink to="/" className="mobile-nav-link">

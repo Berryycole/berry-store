@@ -1,17 +1,20 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useContext } from "react";
 import ProductCard from '../components/ProductCard';
 import Sidebar from '../components/Sidebar';
+import { WishlistContext } from '../context/WishlistContext'; // 1. Import your new Context
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // --- STATE FOR FILTERING & FEATURES ---
+  // --- GLOBAL STATE ---
+  const { wishlist } = useContext(WishlistContext); // 2. Use global wishlist instead of local state
+
+  // --- LOCAL STATE FOR FILTERING ---
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [maxPrice, setMaxPrice] = useState(1000); // Added for Price Filtering
+  const [maxPrice, setMaxPrice] = useState(1000); 
   const [sortOption, setSortOption] = useState('default');
-  const [wishlist, setWishlist] = useState([]);
   const [showWishlistOnly, setShowWishlistOnly] = useState(false);
 
   useEffect(() => {
@@ -41,19 +44,11 @@ const ProductList = () => {
   const displayedProducts = useMemo(() => {
     let filtered = [...products];
 
-    // 1. Wishlist Filter
     if (showWishlistOnly) filtered = filtered.filter(p => wishlist.includes(p.id));
-
-    // 2. Category Filter
     if (selectedCategory !== 'All') filtered = filtered.filter(p => p.category === selectedCategory);
-
-    // 3. Search Filter
     if (searchQuery.trim() !== '') filtered = filtered.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
-
-    // 4. Price Filter (NEW)
     filtered = filtered.filter(p => p.price <= maxPrice);
 
-    // 5. Sorting
     switch (sortOption) {
       case 'price-asc': filtered.sort((a, b) => a.price - b.price); break;
       case 'price-desc': filtered.sort((a, b) => b.price - a.price); break;
@@ -64,11 +59,6 @@ const ProductList = () => {
     return filtered;
   }, [products, searchQuery, selectedCategory, maxPrice, sortOption, showWishlistOnly, wishlist]);
 
-  const toggleWishlist = (productId) => {
-    setWishlist(prev => prev.includes(productId) ? prev.filter(id => id !== productId) : [...prev, productId]);
-  };
-
-  // Helper to handle updates from the Sidebar component
   const handleSidebarFilter = ({ category, maxPrice }) => {
     setSelectedCategory(category);
     setMaxPrice(maxPrice);
@@ -123,11 +113,8 @@ const ProductList = () => {
               {displayedProducts.length > 0 ? (
                 displayedProducts.map((product) => (
                   <div className="col-lg-4 col-md-6 col-sm-6 mb-4" key={product.id}>
-                    <ProductCard 
-                      product={product} 
-                      isFavorited={wishlist.includes(product.id)}
-                      onToggleWishlist={() => toggleWishlist(product.id)}
-                    />
+                    {/* 3. Pass only the product; ProductCard handles its own wishlist status now */}
+                    <ProductCard product={product} />
                   </div>
                 ))
               ) : (
